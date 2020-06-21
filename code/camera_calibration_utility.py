@@ -55,7 +55,7 @@ class CameraCalibrationUtility:
                 cv2.drawChessboardCorners(image, (self.NX, self.NY), corners, ret)
 
         ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, good_corners,
-                                                           grayscaled_image.shape[::-1], None, None)
+                                                           good_calibration_images_grayscale[0].shape[::-1], None, None)
 
         for pos, image in enumerate(good_calibration_images):
             undist = cv2.undistort(good_calibration_images_grayscale[pos], mtx, dist, None, mtx)
